@@ -10,6 +10,6 @@ class OrderFactory {
     }
 
     fun createOrder(disName: String): Order {
-        return Order(Singleton.Sequ ence.getAndIncrement(), disName, OrderState.NEW)
+        return Order(Singleton.Sequence.getAndIncrement(), disName, OrderState.NEW)
     }
 }
