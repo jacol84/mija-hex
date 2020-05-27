@@ -35,5 +35,5 @@ jobs:
     - name: get jar
       uses: actions/upload-artifact@v1
       with:
-        name: jar
+        name: jar-${{ matrix.os }}-${{ matrix.java }}
         path: build/libs/mija-hex.jar
