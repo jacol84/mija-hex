@@ -1,4 +1,4 @@
-![Java CI with Gradle](https://github.com/jacol84/mija-hex/workflows/Java%20CI%20with%20Gradle/badge.svg)
+![CI - HEX](https://github.com/jacol84/mija-hex/workflows/CI%20-%20HEX/badge.svg)
 
 # mija-hex
 https://better-coding.com/pl/
