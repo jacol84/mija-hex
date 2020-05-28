@@ -1,4 +1,4 @@
 package mija.hex.domain.order.port.shared
 
-class OrderDto {
-}
+data class OrderDto(var orderId: Int, var dishName: String, var state: OrderState)
+

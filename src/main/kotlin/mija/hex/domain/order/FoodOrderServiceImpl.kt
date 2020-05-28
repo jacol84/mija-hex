@@ -1,22 +1,29 @@
 package mija.hex.domain.order
 
 import mija.hex.domain.order.port.primary.FoodOrderService
+import mija.hex.domain.order.port.secondary.OrderStore
+import mija.hex.domain.order.port.shared.OrderDto
 import mija.hex.domain.order.port.shared.OrderState
 import java.util.concurrent.atomic.AtomicInteger
 
-class FoodOrderServiceImpl : FoodOrderService {
+class FoodOrderServiceImpl(val orderStore: OrderStore) : FoodOrderService {
 
     companion object {
         var Sequence = AtomicInteger()
     }
 
     override fun createOrder(disName: String): Int {
-        val order = Order(Sequence.getAndIncrement(), disName, OrderState.NEW)
+        val order = OrderFactory.createOrder(disName)
+        orderStore.save(OrderFactory.toOrderDto(order))
         return order.orderId
     }
 
-    override fun getOrderState(disName: String): OrderState {
-        return OrderState.NEW
+    override fun getOrderState(orderId: Int): OrderState? {
+        val orderDto: OrderDto? = orderStore.load(orderId)
+        return orderDto?.let {
+            val order: Order = OrderFactory.from(it)
+            order.state
+        }
     }
 
 }
