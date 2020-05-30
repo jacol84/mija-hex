@@ -6,7 +6,7 @@ import mija.hex.domain.order.port.shared.OrderDto
 import mija.hex.domain.order.port.shared.OrderState
 import java.util.concurrent.atomic.AtomicInteger
 
-class FoodOrderServiceImpl(val orderStore: OrderStore) : FoodOrderService {
+class FoodOrderServiceImpl(private val orderStore: OrderStore) : FoodOrderService {
 
     companion object {
         var Sequence = AtomicInteger()
