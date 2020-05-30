@@ -3,3 +3,8 @@
 # mija-hex
 https://better-coding.com/pl/
 
+TODO 
+TODO 
+TODO 
+
+part #2
