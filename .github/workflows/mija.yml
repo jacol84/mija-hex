@@ -8,15 +8,15 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  
+
 
 jobs:
   build:
-  
+
     strategy:
       matrix:
         name: [linux, windows]
-        include: 
+        include:
           - name: linux
             os: ubuntu-latest
             java: 1.8
@@ -25,20 +25,20 @@ jobs:
             java: 1.11
 
     runs-on: ${{ matrix.os }}
-    
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK ${{ matrix.java }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ matrix.java }}
-    - name: Grant execute permission for gradlew
-      if: startsWith(matrix.os, 'ubuntu-latest')
-      run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
-    - name: get jar
-      uses: actions/upload-artifact@v1
-      with:
-        name: jar-${{ matrix.os }}-${{ matrix.java }}
-        path: build/libs/mija-hex.jar
+      - uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Grant execute permission for gradlew
+        if: startsWith(matrix.os, 'ubuntu-latest')
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: get jar
+        uses: actions/upload-artifact@v1
+        with:
+          name: jar-${{ matrix.os }}-${{ matrix.java }}
+          path: build/libs/mija-hex.jar
