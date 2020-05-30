@@ -21,10 +21,10 @@ class DomainTest2 {
     }
 
     @Test
-    fun `test check if `() {
+    fun testNewBurger () {
         val orderFacade = OrderFacade(oderStore)
         val orderId = orderFacade.getFoodOrderService().createOrder("Burger")
-        assertEquals(1, orderId)
+//        assertEquals(1, orderId)
         var orderState = orderFacade.getFoodOrderService().getOrderState(orderId)
         assertEquals(OrderState.NEW, orderState)
     }
