@@ -4,7 +4,7 @@ import mija.hex.domain.order.port.primary.FoodOrderService
 import mija.hex.domain.order.port.secondary.OrderStore
 import mija.hex.domain.order.port.shared.OrderDto
 import mija.hex.domain.order.port.shared.OrderState
-import org.junit.Test
+import kotlin.test.Test
 
 class DomainTest {
     @Test
