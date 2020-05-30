@@ -9,7 +9,7 @@ plugins {
     groovy
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_11
+//java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
     jcenter()
