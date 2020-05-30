@@ -15,20 +15,12 @@ object OrderFactory {
         return Order(SEQUENCE.incrementAndGet(), disName, OrderState.NEW)
     }
 
-    fun from(orderDto: OrderDto): Order {
-        return orderDto.toOrder()
-    }
+    fun from(orderDto: OrderDto): Order = orderDto.toOrder()
 
     fun toOrderDto(order: Order) = order.toOrderDto()
 
-    fun toOrder(orderDto: OrderDto) = orderDto.toOrder()
-
 }
 
-private fun OrderDto.toOrder(): Order {
-    return Order(orderId, dishName, state)
-}
+private fun OrderDto.toOrder() = Order(orderId, dishName, state)
 
-private fun Order.toOrderDto(): OrderDto {
-    return OrderDto(orderId, disName, state)
-}
+private fun Order.toOrderDto() = OrderDto(orderId, disName, state)
