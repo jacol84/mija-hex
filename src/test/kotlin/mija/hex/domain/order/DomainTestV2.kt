@@ -47,7 +47,7 @@ class DomainTestV2 {
         assertEquals(OrderState.NEW, orderState)
         val dto = oderStore.load(orderId)
         assertNotNull(dto)
-        assertEquals("Burger", dto.dishName)
+        assertEquals("Burger", dto.disName)
     }
 
     @Test

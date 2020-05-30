@@ -6,6 +6,7 @@ plugins {
     kotlin("plugin.spring") version "1.3.72"
     id("org.jetbrains.kotlin.jvm") version "1.3.72"
     jacoco
+    groovy
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -23,9 +24,12 @@ dependencies {
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-    
+
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+    }
+    testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
+        exclude(module = "groovy-all")
     }
 }
 

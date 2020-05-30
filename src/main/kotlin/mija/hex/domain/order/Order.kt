@@ -21,6 +21,6 @@ object OrderFactory {
 
 }
 
-private fun OrderDto.toOrder() = Order(orderId, dishName, state)
+private fun OrderDto.toOrder() = Order(orderId, disName, state)
 
 private fun Order.toOrderDto() = OrderDto(orderId, disName, state)
