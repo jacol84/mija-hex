@@ -8,10 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger
 
 internal class FoodOrderServiceImpl(private val orderStore: OrderStore) : FoodOrderService {
 
-    companion object {
-        var Sequence = AtomicInteger()
-    }
-
     override fun createOrder(disName: String): Int {
         val order = OrderFactory.createOrder(disName)
         orderStore.save(OrderFactory.toOrderDto(order))
