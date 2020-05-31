@@ -40,7 +40,7 @@ jobs:
       - name: Grant execute permission for gradlew
 #         if: startsWith(matrix.os, 'ubuntu-latest')
 #         run: chmod +x gradlew
-        run: git update-index --chmod=+x ./gradlew
+        run: git update-index --chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
       - name: get jar
