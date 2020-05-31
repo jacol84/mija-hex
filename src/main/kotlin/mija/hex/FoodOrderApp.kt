@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component
 class FoodOrderApp
 
 fun main(args: Array<String>) {
-    runApplication<App>(*args)
+    runApplication<FoodOrderApp>(*args)
 }
 
 
