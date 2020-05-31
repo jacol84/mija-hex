@@ -33,6 +33,10 @@ dependencies {
     }
 }
 
+springBoot {
+    mainClassName = "mija.hex.FoodOrderAppKt"
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
