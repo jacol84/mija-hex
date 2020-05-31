@@ -1,4 +1,4 @@
-package mija.hex.infrastructer.domain.order
+package mija.hex.infrastructer.domain.order.service.spring
 
 import mija.hex.domain.order.OrderFacade
 import mija.hex.domain.order.port.primary.FoodOrderService
