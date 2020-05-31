@@ -8,8 +8,8 @@ plugins {
     jacoco
     groovy
 }
-
-//java.sourceCompatibility = JavaVersion.VERSION_11
+// TODO - meyby onlu jdk 11 or 8
+// java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
     jcenter()
