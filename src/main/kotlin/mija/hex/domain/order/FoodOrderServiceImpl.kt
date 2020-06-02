@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger
 internal class FoodOrderServiceImpl(private val orderStore: OrderStore) : FoodOrderService {
 
     override fun createOrder(disName: String): Int {
-        val order = OrderFactory.createOrder(disName)
+        val order = OrderFactory.createOrder(disName,"address")
         orderStore.save(OrderFactory.toOrderDto(order))
         return order.orderId
     }
