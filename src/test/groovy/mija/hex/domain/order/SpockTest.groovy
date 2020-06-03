@@ -7,16 +7,17 @@ class SpockTest extends Specification {
 
     def "check mapper order to orderDto"() {
         given:
-        def order = new Order(id, disName, OrderState.NEW)
+        def order = new Order(id, disName, address, OrderState.NEW)
         when:
         def orderDto = new OrderFactory().toOrderDto(order)
         then:
         assert expectedId == orderDto.getOrderId()
         assert expectedName == orderDto.getDisName()
+        assert expectedAddress == orderDto.getAddress()
         where:
-        id | disName     || expectedId | expectedName
-        10 | "Hod dog"   || 10         | "Hod dog"
-        10 | "Hamburger" || 10         | "Hamburger"
+        id | disName     | address  || expectedId | expectedName | expectedAddress
+        10 | "Hod dog"   | "desk 1" || 10         | "Hod dog"    | "desk 1"
+        10 | "Hamburger" | "desk 1" || 10         | "Hamburger"  | "desk 1"
     }
 
 
