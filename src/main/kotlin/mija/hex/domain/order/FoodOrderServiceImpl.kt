@@ -4,12 +4,11 @@ import mija.hex.domain.order.port.primary.FoodOrderService
 import mija.hex.domain.order.port.secondary.OrderStore
 import mija.hex.domain.order.port.shared.OrderDto
 import mija.hex.domain.order.port.shared.OrderState
-import java.util.concurrent.atomic.AtomicInteger
 
 internal class FoodOrderServiceImpl(private val orderStore: OrderStore) : FoodOrderService {
 
-    override fun createOrder(disName: String): Int {
-        val order = OrderFactory.createOrder(disName,"address")
+    override fun createOrder(disName: String, address: String): Int {
+        val order = OrderFactory.createOrder(disName, address)
         orderStore.save(OrderFactory.toOrderDto(order))
         return order.orderId
     }

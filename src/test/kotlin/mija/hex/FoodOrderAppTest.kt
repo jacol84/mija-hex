@@ -27,7 +27,7 @@ class FoodOrderAppTest {
     @Test
     internal fun createOrderUsingApplicationServices() {
         assertNotNull(foodOrderService)
-        val orderId = foodOrderService.createOrder("Pizza")
+        val orderId = foodOrderService.createOrder("Pizza", "ul. Balonowa")
         val orderState = foodOrderService.getOrderState(orderId)
         assertEquals(OrderState.NEW, orderState)
     }
