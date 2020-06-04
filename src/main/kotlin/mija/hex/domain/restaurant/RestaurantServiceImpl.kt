@@ -11,7 +11,7 @@ internal class RestaurantServiceImpl(private val orderDetails: OrderDetails, pri
 
     override fun prepareOrder(orderId: Int) {
         val dto = orderDetails.getOrderDetails(orderId)
-        logger.info("Prepare dish {}", dto.dishName)
+        logger.info("Prepare dish ${dto.dishName}")
         orderNotification.orderReady(dto.orderId)
     }
 

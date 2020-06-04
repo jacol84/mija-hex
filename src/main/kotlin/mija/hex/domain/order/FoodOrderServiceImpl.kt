@@ -21,4 +21,13 @@ internal class FoodOrderServiceImpl(private val orderStore: OrderStore) : FoodOr
         }
     }
 
+    override fun changeOrderState(orderId: Int, newOrderState: OrderState) {
+        val orderDto: OrderDto? = orderStore.load(orderId)
+        orderDto?.let {
+            val order: Order = OrderFactory.from(it)
+            order.changeState(newOrderState)
+            orderStore.save(OrderFactory.toOrderDto(order))
+        }
+    }
+
 }

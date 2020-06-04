@@ -14,12 +14,12 @@ class CronServiceImpl(private val orderStore: OrderStore, private val logistics:
         val ready = orderStore.findByState(OrderState.READY_TO_DELIVERY)
 
         newOrders.forEach {
-            logger().value.info("Preparing order {}", it.orderId)
+            logger().value.info("Preparing order ${it.orderId}")
             logistics.prepareOrder(it.orderId)
         }
 
         ready.forEach {
-            logger().value.info("Delivering order {}", it.orderId)
+            logger().value.info("Delivering order $it.orderId")
             logistics.deliver(it.orderId)
 
         }

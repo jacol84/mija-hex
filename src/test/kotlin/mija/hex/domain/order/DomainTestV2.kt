@@ -24,7 +24,7 @@ class DomainTestV2 {
         }
 
         override fun findByState(state: OrderState): Collection<OrderDto> {
-            println("findByState::load: $state")
+            println("OrderStore::findByState: $state")
             return memory.filter { it.value.state == state }.values
         }
     }

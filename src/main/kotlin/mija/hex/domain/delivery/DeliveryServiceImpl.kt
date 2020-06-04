@@ -13,7 +13,7 @@ internal class DeliveryServiceImpl(private val orderDetails: OrderDetails, priva
 
     override fun deliveryOrder(orderId: Int) {
         val dto = orderDetails.getOrderDetails(orderId)
-        logger.info("deliveryOrder {}", dto)
+        logger.info("deliveryOrder $dto")
         orderNotification.orderReady(dto.orderId)
     }
 }

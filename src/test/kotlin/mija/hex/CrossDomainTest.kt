@@ -26,17 +26,18 @@ class CrossDomainTest {
         }
 
         override fun findByState(state: OrderState): Collection<OrderDto> {
-            println("findByState::load: $state")
+            println("OrderStore::findByState: $state")
             return memory.filter { it.value.state == state }.values
         }
     }
     private val logistics: Logistics = object : Logistics {
+
         override fun prepareOrder(orderId: Int) {
-            TODO("Not yet implemented")
+            println("Logistics::prepareOrder: $orderId")
         }
 
         override fun deliver(orderId: Int) {
-            TODO("Not yet implemented")
+            println("Logistics::deliver: $orderId")
         }
     }
 
