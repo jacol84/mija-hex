@@ -18,6 +18,7 @@ class SpockTest extends Specification {
         id | disName     | address  || expectedId | expectedName | expectedAddress
         10 | "Hod dog"   | "desk 1" || 10         | "Hod dog"    | "desk 1"
         10 | "Hamburger" | "desk 1" || 10         | "Hamburger"  | "desk 1"
+        10 | "Hamburger" | "ul a"   || 10         | "Hamburger"  | "ul a"
     }
 
 
