@@ -8,8 +8,8 @@ plugins {
     jacoco
     groovy
 }
-
-//java.sourceCompatibility = JavaVersion.VERSION_11
+// TODO - meyby onlu jdk 11 or 8
+// java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
     jcenter()
@@ -31,6 +31,10 @@ dependencies {
     testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
         exclude(module = "groovy-all")
     }
+}
+
+springBoot {
+    mainClassName = "mija.hex.FoodOrderAppKt"
 }
 
 tasks.withType<KotlinCompile> {
