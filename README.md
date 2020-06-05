@@ -7,3 +7,9 @@ MIJA - HEX Test
 # mija-hex
 https://better-coding.com/pl/
 
+TODO 
+TODO  test
+TODO 
+TODO 
+
+part #2
