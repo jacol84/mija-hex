@@ -1,6 +1,6 @@
 package mija.hex.domain.order
 
-import mija.hex.domain.order.port.primary.FoodOrderService
+import mija.hex.domain.order.port.primary.FoodOrderCommandService
 import mija.hex.domain.order.port.shared.OrderState
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -13,12 +13,12 @@ class DomainTestV2 {
     fun `simple domain test - use kotlin test - check status`() {
         //given
         val orderFacade = OrderFacade(createOrderStoreForTest(), createEmptyLogistic())
-        val foodOrderService: FoodOrderService = orderFacade.foodOrderService
-        //given
-        val orderId: Int = foodOrderService.createOrder("Burger", "ul. Balonowa")
+        val foodOrderCommandService: FoodOrderCommandService = orderFacade.foodOrderCommandService
+        //when
+        val orderId: Int = foodOrderCommandService.createOrder("Burger", "ul. Balonowa")
+        val orderDto = orderFacade.foodOrderQueryService.getOrderDetails(orderId)
         //then
-        val orderState: OrderState? = foodOrderService.getOrderState(orderId)
-        assertEquals(OrderState.NEW, orderState)
+        assertEquals(OrderState.NEW, orderDto?.state)
     }
 
     @Test
@@ -26,12 +26,12 @@ class DomainTestV2 {
         //given
         val orderStore = createOrderStoreForTest()
         val orderFacade = OrderFacade(orderStore, createEmptyLogistic())
-        val foodOrderService: FoodOrderService = orderFacade.foodOrderService
+        val foodOrderCommandService: FoodOrderCommandService = orderFacade.foodOrderCommandService
         //given
-        val orderId: Int = foodOrderService.createOrder("Burger", "ul. Balonowa")
+        val orderId: Int = foodOrderCommandService.createOrder("Burger", "ul. Balonowa")
         //then
-        val orderState: OrderState? = foodOrderService.getOrderState(orderId)
-        assertEquals(OrderState.NEW, orderState)
+        val orderDto = orderFacade.foodOrderQueryService.getOrderDetails(orderId)
+        assertEquals(OrderState.NEW, orderDto?.state)
         val dto = orderStore.load(orderId)
         assertNotNull(dto)
         assertEquals("Burger", dto.disName)
@@ -41,11 +41,11 @@ class DomainTestV2 {
     fun `simple domain test - use kotlin test - check status when id not exists in store`() {
         //given
         val orderFacade = OrderFacade(createOrderStoreForTest(), createEmptyLogistic())
-        val foodOrderService: FoodOrderService = orderFacade.foodOrderService
+        val foodOrderCommandService: FoodOrderCommandService = orderFacade.foodOrderCommandService
         //given
         val orderId: Int = -15
         //then
-        val orderState: OrderState? = foodOrderService.getOrderState(orderId)
-        assertNull(orderState)
+        val orderDto = orderFacade.foodOrderQueryService.getOrderDetails(orderId)
+        assertNull(orderDto?.state)
     }
 }

@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    java
     kotlin("jvm") version "1.3.72" apply false
     jacoco
-    groovy
 }
 // TODO - meyby onlu jdk 11 or 8
 // java.sourceCompatibility = JavaVersion.VERSION_11
@@ -17,7 +17,7 @@ subprojects {
         plugin("groovy")
         plugin("jacoco")
     }
-    version = "0.6.0"
+    version = "0.6.0-SNAPSHOT"
 
     repositories {
         mavenCentral()

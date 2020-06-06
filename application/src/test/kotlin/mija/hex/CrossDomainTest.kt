@@ -45,25 +45,27 @@ class CrossDomainTest {
     fun crossDomain() {
         //given
         val orderFacade = OrderFacade(oderStore, logistics)
+        val foodOrderCommandService = orderFacade.foodOrderCommandService
+        val foodOrderQueryService = orderFacade.foodOrderQueryService
 
         //when
-        val orderId = orderFacade.foodOrderService.createOrder("Pizza", "ul. Balonowa")
-        val orderState = orderFacade.foodOrderService.getOrderState(orderId)
+        val orderId = foodOrderCommandService.createOrder("Pizza", "ul. Balonowa")
+        val orderDto = foodOrderQueryService.getOrderDetails(orderId)
 
         //then
         assertNotNull(orderId)
-        assertEquals(OrderState.NEW, orderState)
+        assertEquals(OrderState.NEW, orderDto?.state)
 
         //when
-        orderFacade.cronService.makeOrder()
-        val orderStateReady = orderFacade.foodOrderService.getOrderState(orderId)
+        orderFacade.foodOrderCommandService.makeOrder()
+        val orderDtoReady = foodOrderQueryService.getOrderDetails(orderId)
         //then
-        assertEquals(OrderState.READY_TO_DELIVERY, orderStateReady)
+        assertEquals(OrderState.READY_TO_DELIVERY, orderDtoReady?.state)
 
         //when
-        orderFacade.cronService.makeOrder()
-        val orderStateDelivered = orderFacade.foodOrderService.getOrderState(orderId)
+        orderFacade.foodOrderCommandService.makeOrder()
+        val orderDtoDelivered = foodOrderQueryService.getOrderDetails(orderId)
         //then
-        assertEquals(OrderState.DELIVERED, orderStateDelivered)
+        assertEquals(OrderState.DELIVERED, orderDtoDelivered?.state)
     }
 }

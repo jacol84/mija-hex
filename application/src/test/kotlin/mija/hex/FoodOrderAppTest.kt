@@ -1,7 +1,8 @@
 package mija.hex
 
 
-import mija.hex.domain.order.port.primary.FoodOrderService
+import mija.hex.domain.order.port.primary.FoodOrderCommandService
+import mija.hex.domain.order.port.primary.FoodOrderQueryService
 import mija.hex.domain.order.port.shared.OrderState
 import org.junit.Assert.*
 import org.junit.jupiter.api.Test
@@ -16,7 +17,10 @@ class FoodOrderAppTest {
     lateinit var applicationContext: ApplicationContext
 
     @Autowired
-    lateinit var foodOrderService: FoodOrderService
+    lateinit var foodOrderCommandService: FoodOrderCommandService
+
+    @Autowired
+    lateinit var foodOrderQueryService: FoodOrderQueryService
 
 
     @Test
@@ -26,9 +30,9 @@ class FoodOrderAppTest {
 
     @Test
     internal fun createOrderUsingApplicationServices() {
-        assertNotNull(foodOrderService)
-        val orderId = foodOrderService.createOrder("Pizza", "ul. Balonowa")
-        val orderState = foodOrderService.getOrderState(orderId)
-        assertEquals(OrderState.NEW, orderState)
+        assertNotNull(foodOrderCommandService)
+        val orderId = foodOrderCommandService.createOrder("Pizza", "ul. Balonowa")
+        val orderDto = foodOrderQueryService.getOrderDetails(orderId)
+        assertEquals(OrderState.NEW, orderDto?.state)
     }
 }
