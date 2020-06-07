@@ -1,5 +1,5 @@
 package mija.hex.domain.restaurant.port.primary
 
-interface RestaurantService {
+interface CookCommandService {
     fun prepareOrder(orderId:Int)
 }
