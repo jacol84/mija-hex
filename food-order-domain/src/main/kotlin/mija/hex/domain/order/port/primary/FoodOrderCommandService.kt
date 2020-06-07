@@ -5,5 +5,4 @@ interface FoodOrderCommandService {
     fun markAsReadyToDelivery(orderId: Int)
     fun markAsDelivered(orderId: Int)
     fun makeOrder()
-
 }

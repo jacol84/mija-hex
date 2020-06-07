@@ -16,13 +16,9 @@ internal class FoodOrderCommandServiceImpl(private val orderStore: OrderStore, p
         return order.orderId
     }
 
-    override fun markAsReadyToDelivery(orderId: Int) {
-        changeOrderState(orderId, OrderState.READY_TO_DELIVERY)
-    }
+    override fun markAsReadyToDelivery(orderId: Int) = changeOrderState(orderId, OrderState.READY_TO_DELIVERY)
 
-    override fun markAsDelivered(orderId: Int) {
-        changeOrderState(orderId, OrderState.DELIVERED)
-    }
+    override fun markAsDelivered(orderId: Int) = changeOrderState(orderId, OrderState.DELIVERED)
 
     override fun makeOrder() {
         val newOrders = orderStore.findByState(OrderState.NEW)
@@ -30,13 +26,13 @@ internal class FoodOrderCommandServiceImpl(private val orderStore: OrderStore, p
 
         newOrders.forEach {
             logger().info("Preparing order ${it.orderId}")
+            changeOrderState(it.orderId, OrderState.SENT_TO_RESTAURANT)
             logistics.prepareOrder(it.orderId)
         }
 
         ready.forEach {
             logger().info("Delivering order $it.orderId")
             logistics.deliver(it.orderId)
-
         }
     }
 
