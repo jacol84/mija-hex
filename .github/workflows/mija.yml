@@ -10,7 +10,13 @@ on:
     branches: [ master ]
 
 
+
 jobs:
+  first:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Build with Gradle
+         run: ./gradlew build
   build:
 
     strategy:
