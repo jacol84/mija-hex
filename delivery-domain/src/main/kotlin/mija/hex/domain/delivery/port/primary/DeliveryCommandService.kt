@@ -1,5 +1,5 @@
 package mija.hex.domain.delivery.port.primary
 
-interface DeliveryService {
+interface DeliveryCommandService {
     fun deliveryOrder(orderId: Int)
 }
