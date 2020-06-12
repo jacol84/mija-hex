@@ -1,12 +1,15 @@
 package mija.hex.test
 
-import mija.hex.FoodOrderAppTest
+import mija.hex.FoodOrderApp
+import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import kotlin.test.Ignore
-import kotlin.test.Test
+import org.springframework.context.ApplicationContext
 
-@SpringBootTest(classes = [FoodOrderAppTest::class])
+@SpringBootTest(classes = [FoodOrderApp::class])
 class CrossDomainTest {
+    @Autowired
+    lateinit var applicationContext: ApplicationContext
 
     @Test
     fun crossDomain() {
