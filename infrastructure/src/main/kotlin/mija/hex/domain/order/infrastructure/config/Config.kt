@@ -7,6 +7,7 @@ import mija.hex.domain.order.infrastructure.adapter.secondary.TrueLogistics
 import mija.hex.domain.order.infrastructure.port.secondary.Logistics
 import mija.hex.domain.order.infrastructure.port.secondary.OrderStore
 import mija.hex.domain.restaurant.port.primary.CookCommandService
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -19,5 +20,5 @@ class Config {
     fun orderStore(): OrderStore = InMemoryOrderStore()
 
     @Bean
-    fun getLogistics(cookCommandService: CookCommandService, deliveryCommandService: DeliveryCommandService): Logistics = TrueLogistics(cookCommandService, deliveryCommandService)
+    fun getLogistics(applicationEventPublisher: ApplicationEventPublisher): Logistics = TrueLogistics(applicationEventPublisher)
 }

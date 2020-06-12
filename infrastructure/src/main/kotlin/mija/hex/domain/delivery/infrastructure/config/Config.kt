@@ -2,9 +2,11 @@ package mija.hex.domain.delivery.infrastructure.config
 
 import mija.hex.domain.delivery.DeliveryFacade
 import mija.hex.domain.delivery.infrastructure.adapter.secondary.OrderDetailsAdapter
+import mija.hex.domain.delivery.infrastructure.adapter.secondary.OrderNotificationAdapter
 import mija.hex.domain.delivery.port.secondary.OrderDetails
 import mija.hex.domain.delivery.port.secondary.OrderNotification
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderQueryService
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -19,6 +21,6 @@ class Config {
     }
 
     @Bean
-    fun orderNotification(): OrderNotification = TODO()
+    fun orderNotification(applicationEventPublisher: ApplicationEventPublisher): OrderNotification = OrderNotificationAdapter(applicationEventPublisher)
 
 }

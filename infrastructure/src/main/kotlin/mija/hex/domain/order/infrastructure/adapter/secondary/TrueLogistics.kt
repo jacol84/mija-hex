@@ -1,15 +1,17 @@
 package mija.hex.domain.order.infrastructure.adapter.secondary
 
-import mija.hex.domain.delivery.port.primary.DeliveryCommandService
 import mija.hex.domain.order.infrastructure.port.secondary.Logistics
-import mija.hex.domain.restaurant.port.primary.CookCommandService
+import mija.hex.infrastructure.command.DeliverOrderCommand
+import mija.hex.infrastructure.command.PrepareDishCommand
+import org.springframework.context.ApplicationEventPublisher
 
-class TrueLogistics(private val cookCommandService: CookCommandService, private val deliveryCommandService: DeliveryCommandService) : Logistics {
+class TrueLogistics(private val eventPublisher: ApplicationEventPublisher) : Logistics {
+
     override fun prepareOrder(orderId: Int) {
-        cookCommandService.prepareOrder(orderId)
+        eventPublisher.publishEvent(PrepareDishCommand(orderId))
     }
 
     override fun deliver(orderId: Int) {
-        deliveryCommandService.deliveryOrder(orderId)
+        eventPublisher.publishEvent(DeliverOrderCommand(orderId))
     }
 }
