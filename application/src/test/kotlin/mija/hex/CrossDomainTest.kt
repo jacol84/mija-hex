@@ -1,10 +1,10 @@
 package mija.hex
 
-import mija.hex.domain.order.OrderFacade
-import mija.hex.domain.order.port.secondary.Logistics
-import mija.hex.domain.order.port.secondary.OrderStore
-import mija.hex.domain.order.port.shared.OrderDto
-import mija.hex.domain.order.port.shared.OrderState
+import mija.hex.domain.order.infrastructure.OrderFacade
+import mija.hex.domain.order.infrastructure.port.secondary.Logistics
+import mija.hex.domain.order.infrastructure.port.secondary.OrderStore
+import mija.hex.domain.order.infrastructure.port.shared.OrderDto
+import mija.hex.domain.order.infrastructure.port.shared.OrderState
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
