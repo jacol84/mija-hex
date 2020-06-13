@@ -5,7 +5,7 @@ import mija.hex.domain.order.infrastructure.port.shared.OrderDto
 import mija.hex.domain.restaurant.port.secondary.OrderDetails
 import mija.hex.domain.restaurant.port.shared.OrderDetailsDto
 
-class OrderDetailsAdapter(private val foodOrderQueryService: FoodOrderQueryService) : OrderDetails {
+internal class OrderDetailsAdapter(private val foodOrderQueryService: FoodOrderQueryService) : OrderDetails {
 
     //FIXME !!
     override fun getOrderDetails(orderId: Int): OrderDetailsDto {

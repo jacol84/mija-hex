@@ -5,7 +5,7 @@ import mija.hex.infrastructure.command.DeliverOrderCommand
 import mija.hex.infrastructure.command.PrepareDishCommand
 import org.springframework.context.ApplicationEventPublisher
 
-class TrueLogistics(private val eventPublisher: ApplicationEventPublisher) : Logistics {
+internal class TrueLogistics(private val eventPublisher: ApplicationEventPublisher) : Logistics {
 
     override fun prepareOrder(orderId: Int) {
         eventPublisher.publishEvent(PrepareDishCommand(orderId))

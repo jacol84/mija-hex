@@ -1,10 +1,8 @@
-package mija.hex.domain.restaurant.infrastructure.config
+package mija.hex.domain.restaurant.infrastructure.adapter.secondary
 
 
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderQueryService
 import mija.hex.domain.restaurant.RestaurantFacade
-import mija.hex.domain.restaurant.infrastructure.adapter.secondary.OrderDetailsAdapter
-import mija.hex.domain.restaurant.infrastructure.adapter.secondary.OrderNotificationAdapter
 import mija.hex.domain.restaurant.port.secondary.OrderDetails
 import mija.hex.domain.restaurant.port.secondary.OrderNotification
 import org.springframework.context.ApplicationEventPublisher

@@ -7,7 +7,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
 
 @Service
-class CookCommandAppService(val restaurantFacade: RestaurantFacade) : CookCommandService by restaurantFacade.cookCommandService {
+internal class CookCommandAppService(val restaurantFacade: RestaurantFacade) : CookCommandService by restaurantFacade.cookCommandService {
     @EventListener
     fun handlerPrepareOrder(prepareDishCommand: PrepareDishCommand) = prepareOrder(prepareDishCommand.orderId)
 }

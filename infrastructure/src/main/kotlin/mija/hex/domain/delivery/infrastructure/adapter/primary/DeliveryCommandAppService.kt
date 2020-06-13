@@ -7,7 +7,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
 
 @Service
-class DeliveryCommandAppService(deliveryFacade: DeliveryFacade) : DeliveryCommandService by deliveryFacade.deliveryCommandService {
+internal class DeliveryCommandAppService(deliveryFacade: DeliveryFacade) : DeliveryCommandService by deliveryFacade.deliveryCommandService {
     @EventListener
     fun handlerPrepareOrder(deliverOrderCommand: DeliverOrderCommand) = deliveryOrder(deliverOrderCommand.orderId)
 }
