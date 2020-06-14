@@ -3,7 +3,7 @@ package mija.hex.domain.order.infrastructure.adapter.secondary
 import mija.hex.domain.order.infrastructure.OrderFacade
 import mija.hex.domain.order.infrastructure.port.secondary.Logistics
 import mija.hex.domain.order.infrastructure.port.secondary.OrderStore
-import org.springframework.context.ApplicationEventPublisher
+import mija.hex.infrastructure.CommandBus
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -16,5 +16,5 @@ internal class Config {
     fun orderStore(): OrderStore = InMemoryOrderStore()
 
     @Bean
-    fun getLogistics(applicationEventPublisher: ApplicationEventPublisher): Logistics = TrueLogistics(applicationEventPublisher)
+    fun getLogistics(commandBus: CommandBus): Logistics = TrueLogistics(commandBus)
 }

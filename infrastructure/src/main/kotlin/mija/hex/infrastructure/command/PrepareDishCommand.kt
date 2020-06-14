@@ -1,3 +1,3 @@
 package mija.hex.infrastructure.command
 
-data class PrepareDishCommand(val orderId: Int)
+data class PrepareDishCommand(val orderId: Int):Command

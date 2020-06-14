@@ -1,3 +1,3 @@
 package mija.hex.infrastructure.command
 
-data class MarkOrderAsDeliveredCommand(val orderId: Int)
+data class MarkOrderAsDeliveredCommand(val orderId: Int):Command

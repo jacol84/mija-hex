@@ -1,10 +1,10 @@
 package mija.hex.domain.restaurant.infrastructure.adapter.secondary
 
-
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderQueryService
 import mija.hex.domain.restaurant.RestaurantFacade
 import mija.hex.domain.restaurant.port.secondary.OrderDetails
 import mija.hex.domain.restaurant.port.secondary.OrderNotification
+import mija.hex.infrastructure.CommandBus
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -21,6 +21,6 @@ class Config {
     }
 
     @Bean
-    fun restaurantOrderNotification(applicationEventPublisher: ApplicationEventPublisher): OrderNotification = OrderNotificationAdapter(applicationEventPublisher)
+    fun restaurantOrderNotification(commandBus: CommandBus): OrderNotification = OrderNotificationAdapter(commandBus)
 
 }

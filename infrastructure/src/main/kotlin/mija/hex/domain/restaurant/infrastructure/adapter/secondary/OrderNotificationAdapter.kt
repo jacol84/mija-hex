@@ -1,9 +1,9 @@
 package mija.hex.domain.restaurant.infrastructure.adapter.secondary
 
 import mija.hex.domain.restaurant.port.secondary.OrderNotification
-import mija.hex.infrastructure.command.MarkOrderAsRedyToDeliveryCommand
-import org.springframework.context.ApplicationEventPublisher
+import mija.hex.infrastructure.CommandBus
+import mija.hex.infrastructure.command.MarkOrderAsReadyToDeliveryCommand
 
-internal class OrderNotificationAdapter(private val applicationEventPublisher: ApplicationEventPublisher) : OrderNotification {
-    override fun orderReady(orderId: Int) = applicationEventPublisher.publishEvent(MarkOrderAsRedyToDeliveryCommand(orderId))
+internal class OrderNotificationAdapter(private val commandBus: CommandBus) : OrderNotification {
+    override fun orderReady(orderId: Int) = commandBus.fire(MarkOrderAsReadyToDeliveryCommand(orderId))
 }
