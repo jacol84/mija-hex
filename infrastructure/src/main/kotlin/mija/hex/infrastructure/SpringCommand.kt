@@ -13,11 +13,11 @@ private val logger: Logger = LoggerFactory.getLogger(SpringCommand::class.java)
 @Service
 internal class SpringCommand(private val applicationEventPublisher: ApplicationEventPublisher, private val applicationContext: ApplicationContext) : CommandBus {
 
-//    private val map by lazy {
-//        logger.info("lazy init map")
-//        applicationContext.getBeanNamesForType(CommandHandler::class.java)
-//                .map { applicationContext.getBean(it, CommandHandler::class.java) }.groupBy { it.getCommandClass() }
-//    }
+    private val map by lazy {
+        logger.info("lazy init map")
+        applicationContext.getBeanNamesForType(CommandHandler::class.java)
+                .map { applicationContext.getBean(it, CommandHandler::class.java) }.groupBy { it.getCommandClass() }
+    }
 
     override fun fire(command: Command) {
         logger.info("before fire command: $command")
@@ -28,14 +28,7 @@ internal class SpringCommand(private val applicationEventPublisher: ApplicationE
     @EventListener
     override fun handle(command: Command) {
         logger.info("before handler command: $command")
-        applicationContext.getBeanNamesForType(CommandHandler::class.java)
-                .map { applicationContext.getBean(it, CommandHandler::class.java) }
-                .forEach {
-                    if (it.getCommandClass() == command::class) {
-                        it.handle(command)
-                    }
-                }
-
+        map[command::class]?.forEach { it.handle(command) }
         logger.info("after handler command: $command")
     }
 }
