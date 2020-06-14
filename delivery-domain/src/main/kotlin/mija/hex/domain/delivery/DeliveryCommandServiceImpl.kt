@@ -11,7 +11,7 @@ internal class DeliveryCommandServiceImpl(private val orderDetails: OrderDetails
 
     private val logger: Logger = LoggerFactory.getLogger(DeliveryCommandServiceImpl::class.java)
 
-    override fun deliveryOrder(orderId: Int) {
+    override fun deliverOrder(orderId: Int) {
         val dto = orderDetails.getOrderDetails(orderId)
         logger.info("deliveryOrder $dto")
         orderNotification.orderReady(dto.orderId)

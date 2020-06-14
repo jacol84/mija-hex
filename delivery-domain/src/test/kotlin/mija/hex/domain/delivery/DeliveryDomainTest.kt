@@ -24,7 +24,7 @@ class DeliveryDomainTest {
         val deliveryFacade = DeliveryFacade(orderDetails, orderNotification)
 
         //when
-        deliveryFacade.deliveryCommandService.deliveryOrder(1)
+        deliveryFacade.deliveryCommandService.deliverOrder(1)
         //then
         assertEquals(true, mapSender.getOrDefault(1, false))
     }
