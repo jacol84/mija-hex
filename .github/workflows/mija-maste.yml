@@ -37,7 +37,7 @@ jobs:
             java: 1.11
           - name: windows
             os: windows-latest
-            java: 1.11
+            java: 1.8
 
     runs-on: ${{ matrix.os }}
 
