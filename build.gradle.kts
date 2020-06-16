@@ -5,11 +5,6 @@ plugins {
     kotlin("jvm") version "1.3.72" apply false
     jacoco
 }
-// TODO - meyby onlu jdk 11 or 8
-// java.sourceCompatibility = JavaVersion.VERSION_11
-
-
-
 
 subprojects {
     apply {
@@ -17,7 +12,7 @@ subprojects {
         plugin("groovy")
         plugin("jacoco")
     }
-    version = "0.6.0-SNAPSHOT"
+    version = "0.8.0-SNAPSHOT"
 
     repositories {
         mavenCentral()

@@ -1,8 +1,10 @@
 
 
 rootProject.name = "mija-hex"
-include("food-order-domain")
-include("restaurant-domain")
-include("delivery-domain")
+include("food-order-app")
+include("food-order-app:food-order-domain")
+include("domain:restaurant-domain")
+include("domain:delivery-domain")
 include("infrastructure")
 include("application")
+include("command-bus")

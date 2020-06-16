@@ -9,9 +9,6 @@ plugins {
 dependencies {
 
     api(project(":food-order-app:food-order-domain"))
-    api(project(":domain:delivery-domain"))
-    api(project(":domain:restaurant-domain"))
-
 
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")
