@@ -1,4 +1,4 @@
-package mija.hex.infrastructure.app.delivery.config
+package app.delivery.config
 
 import mija.hex.domain.delivery.port.primary.DeliveryCommandService
 import mija.hex.infrastructure.CommandHandler

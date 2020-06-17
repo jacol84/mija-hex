@@ -1,4 +1,4 @@
-package mija.hex.infrastructure.app.delivery.adpater.secondary
+package app.delivery.adpater.secondary
 
 import mija.hex.domain.delivery.port.secondary.OrderNotification
 import mija.hex.infrastructure.CommandBus
