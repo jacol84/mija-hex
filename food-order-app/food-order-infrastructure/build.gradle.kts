@@ -9,6 +9,7 @@ plugins {
 dependencies {
 
     api(project(":food-order-app:food-order-domain"))
+    api(project(":food-order-app:food-order-api"))
     api(project(":command-bus"))
 
 
