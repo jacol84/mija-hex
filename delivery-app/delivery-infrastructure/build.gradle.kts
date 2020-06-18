@@ -9,6 +9,7 @@ plugins {
 dependencies {
 
     api(project(":delivery-app:delivery-domain"))
+    api(project(":food-order-app:food-order-api"))
     api(project(":command-bus"))
 
     implementation(kotlin("stdlib-jdk8"))
