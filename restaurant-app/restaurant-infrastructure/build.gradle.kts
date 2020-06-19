@@ -10,6 +10,7 @@ dependencies {
 
     api(project(":command-bus"))
     api(project(":restaurant-app:restaurant-domain"))
+    api(project(":food-order-app:food-order-api"))
 
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")

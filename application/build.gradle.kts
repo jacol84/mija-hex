@@ -6,9 +6,9 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":delivery-app"))
-    implementation(project(":food-order-app"))
-    implementation(project(":restaurant-app"))
+    implementation(project(":delivery-app:delivery-infrastructure"))
+    implementation(project(":food-order-app:food-order-infrastructure"))
+    implementation(project(":restaurant-app:restaurant-infrastructure"))
 
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")

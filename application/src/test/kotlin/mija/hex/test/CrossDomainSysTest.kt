@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import kotlin.test.assertEquals
 
-@SpringBootTest(classes = [FoodOrderApp::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-class CrossDomainTest {
+@SpringBootTest(classes = [FoodOrderApp::class])
+class CrossDomainSysTest {
     @Autowired
     private lateinit var foodOrderCommandService: FoodOrderCommandService
 

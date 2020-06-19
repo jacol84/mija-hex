@@ -20,7 +20,7 @@ class Config {
 
     @Bean("delivery-order-details")
     fun orderDetails(
-            @Qualifier("food-order-service-rest-template") restTemplate: RestTemplate,
+            @Qualifier("food-order-service--delivery-rest-template") restTemplate: RestTemplate,
             @Value("\${endpoint.foodOrderEndpointURL}") url: String
     ): OrderDetails {
         return FoodOrderDetailsRestAdapter(restTemplate, url)
@@ -29,7 +29,7 @@ class Config {
     @Bean
     fun orderNotification(commandBus: CommandBus): OrderNotification = OrderNotificationAdapter(commandBus)
 
-    @Bean("food-order-service-rest-template")
+    @Bean("food-order-service--delivery-rest-template")
     fun restTemplate(restTemplateBuilder: RestTemplateBuilder): RestTemplate {
         return restTemplateBuilder.build()
     }

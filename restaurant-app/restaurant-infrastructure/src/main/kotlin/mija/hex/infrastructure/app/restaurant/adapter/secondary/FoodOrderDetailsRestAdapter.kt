@@ -1,10 +1,9 @@
-package app.delivery.adpater.secondary
+package mija.hex.infrastructure.app.restaurant.adapter.secondary
 
-import mija.hex.domain.delivery.port.secondary.OrderDetails
-import mija.hex.domain.delivery.port.shared.OrderDetailsDto
+import mija.hex.domain.restaurant.port.secondary.OrderDetails
+import mija.hex.domain.restaurant.port.shared.OrderDetailsDto
 import mija.hex.infrastructure.app.order.api.OrderDetailsResponse
 import org.springframework.web.client.RestTemplate
-
 
 class FoodOrderDetailsRestAdapter(private val restTemplate: RestTemplate, private val url: String) : OrderDetails {
 
