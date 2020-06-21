@@ -4,11 +4,9 @@ import mija.hex.FoodOrderApp
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderCommandService
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderQueryService
 import mija.hex.domain.order.infrastructure.port.shared.OrderState
-import kotlin.test.Test
-import org.slf4j.LoggerFactory
-
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 @SpringBootTest(classes = [FoodOrderApp::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -22,7 +20,6 @@ class CrossDomainSysTest {
     @Test
     fun basicScenario() {
         //given
-        val logger = LoggerFactory.getLogger(CrossDomainSysTest::class.java)
         //when
         val orderId = foodOrderCommandService.createOrder("Pizza", "Wall Street")
         //then
@@ -35,16 +32,5 @@ class CrossDomainSysTest {
         foodOrderCommandService.makeOrder()
         //then
         assertEquals(OrderState.DELIVERED, foodOrderQueryService.getOrderDetails(orderId)?.state)
-        logger.info("""
-            
-            AAAAAAAAAAAAAAAAAAA testeuję 
-            AAAAAAAAAAAAAAAAAAA testeuję 
-            AAAAAAAAAAAAAAAAAAA testeuję 
-            AAAAAAAAAAAAAAAAAAA testeuję 
-            AAAAAAAAAAAAAAAAAAA testeuję 
-            
-            
-            
-        """.trimIndent())
     }
 }
