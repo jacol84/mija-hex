@@ -27,6 +27,6 @@ class BeanInfo : CommandLineRunner {
 
     override fun run(vararg args: String?) {
         logger.info("Beans")
-        applicationContext.beanDefinitionNames.forEach { logger.info(it) }
+//        applicationContext.beanDefinitionNames.forEach { logger.info(it) }
     }
 }

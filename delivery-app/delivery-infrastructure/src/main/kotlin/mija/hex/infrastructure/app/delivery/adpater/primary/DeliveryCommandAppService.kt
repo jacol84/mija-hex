@@ -1,4 +1,4 @@
-package app.delivery.adpater.primary
+package mija.hex.infrastructure.app.delivery.adpater.primary
 
 import mija.hex.domain.delivery.DeliveryFacade
 import mija.hex.domain.delivery.port.primary.DeliveryCommandService

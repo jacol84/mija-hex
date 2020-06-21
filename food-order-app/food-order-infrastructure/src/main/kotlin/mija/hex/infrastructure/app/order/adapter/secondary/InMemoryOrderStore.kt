@@ -6,11 +6,12 @@ import mija.hex.domain.order.infrastructure.port.shared.OrderState
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-
 internal class InMemoryOrderStore : OrderStore {
+
     private val logger: Logger = LoggerFactory.getLogger(InMemoryOrderStore::class.java)
 
     private val memory: MutableMap<Int, OrderDto> = mutableMapOf()
+
     override fun save(dto: OrderDto) {
         logger.info("OrderStore::save: ${dto.orderId}")
         memory[dto.orderId] = dto

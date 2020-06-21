@@ -5,12 +5,12 @@ import mija.hex.domain.order.infrastructure.port.primary.FoodOrderCommandService
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderQueryService
 import mija.hex.domain.order.infrastructure.port.shared.OrderState
 import org.junit.Assert.*
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.ApplicationContext
 
-@SpringBootTest(classes = [FoodOrderApp::class])
+@SpringBootTest(classes = [FoodOrderApp::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class FoodOrderAppTest {
 
     @Autowired

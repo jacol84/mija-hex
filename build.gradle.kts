@@ -26,20 +26,21 @@ subprojects {
 
     dependencies {
         implementation("org.slf4j:slf4j-api:1.7.30")
-//        testImplementation("org.slf4j:slf4j-simple:1.7.30")
-//        testImplementation("org.slf4j:slf4j-nop:1.7.30")
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
         testImplementation("org.jetbrains.kotlin:kotlin-test")
-        testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+        testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
         testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
             exclude(module = "groovy-all")
         }
 
     }
+//    tasks.withType<Test> {
+//        useJUnitPlatform()
+//    }
 }
 
 
