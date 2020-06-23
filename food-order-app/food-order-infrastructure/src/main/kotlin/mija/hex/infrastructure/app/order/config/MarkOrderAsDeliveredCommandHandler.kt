@@ -9,6 +9,25 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 internal class MarkOrderAsDeliveredCommandHandler(private val foodOrderCommandService: FoodOrderCommandService) : CommandHandler<MarkOrderAsDeliveredCommand> {
     override fun handle(command: Command) {
+        println("""
+            
+            
+            
+BBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAA
+BBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAA
+BBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAA
+BBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAABBBBBBBBBBBBBBAAAAAAAAAAAA
+
+
+
+
+
+
+
+
+
+
+        """.trimIndent())
         foodOrderCommandService.markAsDelivered(command.orderId)
     }
     override fun getCommandClass() =  MarkOrderAsDeliveredCommand::class

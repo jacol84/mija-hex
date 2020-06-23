@@ -82,9 +82,10 @@ sonarqube {
         property("sonar.projectKey", "jacol84_mija-hex")
         property("sonar.organization", "jacol84jacol84")
         property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.login", "4f21315ee7d74305bd8b0454b461b4f536c9d644")
-        property("sonar.junit.reportPaths", "**/test-results/test")
-        property("sonar.coverage.jacoco.xmlReportPaths","**/build/reports/jacoco/test/jacocoTestReport.xml")
+
+//        property("sonar.junit.reportPaths", "**/test-results/test")
+//        property("sonar.coverage.jacoco.xmlReportPaths","**/build/reports/jacoco/test/jacocoTestReport.xml")
+        property("sonar.coverage.jacoco.reportPath","**/build/jacoco/test.exec")
     }
 }
 
