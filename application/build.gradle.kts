@@ -2,7 +2,6 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
-    kotlin("jvm")
 }
 
 dependencies {
@@ -10,7 +9,6 @@ dependencies {
     implementation(project(":food-order-app:food-order-infrastructure"))
     implementation(project(":restaurant-app:restaurant-infrastructure"))
 
-    implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
 

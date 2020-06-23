@@ -3,7 +3,6 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
-    kotlin("jvm")
 }
 
 dependencies {
@@ -12,8 +11,6 @@ dependencies {
     api(project(":food-order-app:food-order-api"))
     api(project(":command-bus"))
 
-
-    implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
@@ -26,8 +23,4 @@ tasks.getByName<Jar>("jar") {
 }
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
     enabled = false
-}
-
-springBoot {
-    mainClassName = "mija.hex.FoodOrderAppTest"
 }

@@ -3,17 +3,10 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("plugin.spring")
-    kotlin("jvm")
 }
 
 dependencies {
 
-//    api(project(":domain:food-order-domain"))
-//    api(project(":domain:delivery-domain"))
-//    api(project(":domain:restaurant-domain"))
-
-
-    implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
@@ -26,8 +19,4 @@ tasks.getByName<Jar>("jar") {
 }
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
     enabled = false
-}
-
-springBoot {
-    mainClassName = "mija.hex.FoodOrderAppTest"
 }
