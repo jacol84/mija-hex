@@ -12,6 +12,8 @@ repositories {
     jcenter()
 }
 
+val rootBuildDir = buildDir
+
 subprojects {
     apply {
         plugin("org.jetbrains.kotlin.jvm")
@@ -48,33 +50,22 @@ subprojects {
     }
     tasks.jacocoTestReport {
         reports {
+            executionData(file("$rootBuildDir\\jacoco\\allTestCoverage.exec"))
+            sourceSets(sourceSets.main.get())
             xml.isEnabled = true
-            csv.isEnabled = false
+        }
+        onlyIf{
+            file("$buildDir/jacoco/test.exec").exists().also { logger.error("$buildDir/jacoco/test.exec ->$it") }
         }
     }
 }
 
-tasks.register<JacocoReport>("codeCoverageReport") {
-    subprojects {
-        //FIXME check project when hass esult
-        if (this.project.name !in listOf("command-bus", "delivery-app", "food-order-app", "restaurant-app", "delivery-api", "food-order-api", "restaurant-api", "delivery-infrastructure", "food-order-infrastructure", "restaurant-infrastructure")) {
-            val subProjectIt = this
-            subProjectIt.plugins.withType<JacocoPlugin>().configureEach {
-                subProjectIt.tasks.matching { it.extensions.findByType<JacocoTaskExtension>() != null }.configureEach {
-                    val testTask = this
-                    sourceSets(subProjectIt.sourceSets.main.get())
-                    executionData(testTask)
-                }
-                subProjectIt.tasks.matching { it.extensions.findByType<JacocoTaskExtension>() != null }.forEach {
-                    rootProject.tasks["codeCoverageReport"].dependsOn(it)
-                }
-            }
-        }
-    }
-
-    reports {
-        xml.isEnabled = true
-    }
+tasks.register<JacocoMerge>("jacocoMergeTest") {
+    destinationFile = file("$buildDir/jacoco/allTestCoverage.exec")
+    subprojects.map { file("${it.buildDir}/jacoco/test.exec") }.filter {
+        logger.error(it.name)
+        it.exists()
+    }.forEach { executionData(it) }
 }
 
 sonarqube {
@@ -84,8 +75,8 @@ sonarqube {
         property("sonar.host.url", "https://sonarcloud.io")
 
 //        property("sonar.junit.reportPaths", "**/test-results/test")
-//        property("sonar.coverage.jacoco.xmlReportPaths","**/build/reports/jacoco/test/jacocoTestReport.xml")
-        property("sonar.coverage.jacoco.reportPath","**/build/jacoco/test.exec")
+        property("sonar.coverage.jacoco.xmlReportPaths","**/build/reports/jacoco/test/jacocoTestReport.xml")
+        property("sonar.jacoco.reportPaths","**/build/jacoco/test.exec")
     }
 }
 
