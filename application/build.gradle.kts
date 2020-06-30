@@ -19,7 +19,7 @@ dependencies {
 
 
 springBoot {
-    mainClassName = "mija.hex.FoodOrderAppTest"
+    mainClassName = "mija.hex.FoodOrderAppKt"
 }
 
 

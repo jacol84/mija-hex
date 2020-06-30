@@ -73,8 +73,7 @@ sonarqube {
         property("sonar.projectKey", "jacol84_mija-hex")
         property("sonar.organization", "jacol84jacol84")
         property("sonar.host.url", "https://sonarcloud.io")
-
-//        property("sonar.junit.reportPaths", "**/test-results/test")
+        property("sonar.login", System.getenv()?.get("SONAR_CLOUD_TOKEN")?:"")
         property("sonar.coverage.jacoco.xmlReportPaths","**/build/reports/jacoco/test/jacocoTestReport.xml")
         property("sonar.jacoco.reportPaths","**/build/jacoco/test.exec")
     }
