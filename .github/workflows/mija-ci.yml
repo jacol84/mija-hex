@@ -31,6 +31,9 @@ jobs:
           java-version: 1.11
       - name: Build with Gradle
         run: ./gradlew build test
+      - name: Build with Gradle env
+        env:
+          SONAR_CLOUD_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
       - name: Build with Gradle
         run: ./gradlew jacocoMergeTest
       - name: Build with Gradle
