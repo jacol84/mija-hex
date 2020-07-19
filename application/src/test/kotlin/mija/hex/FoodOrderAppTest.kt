@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.ApplicationContext
 import kotlin.test.Test
 
-@SpringBootTest(classes = [FoodOrderApp::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = [App::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class FoodOrderAppTest {
 
     @Autowired

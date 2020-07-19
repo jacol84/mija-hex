@@ -10,10 +10,10 @@ import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Component
 
 @SpringBootApplication
-class FoodOrderApp
+class App
 
 fun main(args: Array<String>) {
-    runApplication<FoodOrderApp>(*args)
+    runApplication<App>(*args)
 }
 
 

@@ -4,7 +4,7 @@ plugins {
     jacoco
     id("org.sonarqube") version "2.8"
     kotlin("plugin.spring") version "1.3.72" apply false
-    id("org.springframework.boot") version "2.3.0.RELEASE" apply false
+    id("org.springframework.boot") version "2.3.1.RELEASE" apply false
     id("io.spring.dependency-management") version "1.0.9.RELEASE" apply false
 }
 repositories {
@@ -20,13 +20,12 @@ subprojects {
         plugin("groovy")
         plugin("jacoco")
     }
-    version = "0.8.0-SNAPSHOT"
+    version = "0.9.0-SNAPSHOT"
 
     repositories {
         mavenCentral()
         jcenter()
     }
-
 
     dependencies {
         implementation("org.slf4j:slf4j-api:1.7.30")
@@ -43,19 +42,35 @@ subprojects {
         testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
             exclude(module = "groovy-all")
         }
+    }
 
-    }
-    tasks.withType<Test> {
-        useJUnitPlatform()
-    }
-    tasks.jacocoTestReport {
-        reports {
-            executionData(file("$rootBuildDir\\jacoco\\allTestCoverage.exec"))
-            sourceSets(sourceSets.main.get())
-            xml.isEnabled = true
+    tasks {
+        whenTaskAdded {
+            if (this.name == "bootBuildImage") {
+                getByName<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("bootBuildImage") {
+                    enabled = false
+                    imageName = "mija-hex/${project.name}:latest"
+                }
+            }
+            if (this.name == "bootJar") {
+                this.enabled = false
+                jar {
+                    enabled = true
+                }
+            }
         }
-        onlyIf{
-            file("$buildDir/jacoco/test.exec").exists().also { logger.error("$buildDir/jacoco/test.exec ->$it") }
+        withType<Test> {
+            useJUnitPlatform()
+        }
+        jacocoTestReport {
+            reports {
+                executionData(file("$rootBuildDir\\jacoco\\allTestCoverage.exec"))
+                sourceSets(sourceSets.main.get())
+                xml.isEnabled = true
+            }
+            onlyIf {
+                file("$buildDir/jacoco/test.exec").exists().also { logger.error("$buildDir/jacoco/test.exec ->$it") }
+            }
         }
     }
 }
@@ -73,9 +88,9 @@ sonarqube {
         property("sonar.projectKey", "jacol84_mija-hex")
         property("sonar.organization", "jacol84jacol84")
         property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.login", System.getenv()?.get("SONAR_CLOUD_TOKEN")?:"")
-        property("sonar.coverage.jacoco.xmlReportPaths","**/build/reports/jacoco/test/jacocoTestReport.xml")
-        property("sonar.jacoco.reportPaths","**/build/jacoco/test.exec")
+        property("sonar.login", System.getenv()?.get("SONAR_CLOUD_TOKEN") ?: "")
+        property("sonar.coverage.jacoco.xmlReportPaths", "**/build/reports/jacoco/test/jacocoTestReport.xml")
+        property("sonar.jacoco.reportPaths", "**/build/jacoco/test.exec")
     }
 }
 

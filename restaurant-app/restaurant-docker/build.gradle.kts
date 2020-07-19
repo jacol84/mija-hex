@@ -5,20 +5,11 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":delivery-app:delivery-infrastructure"))
-    implementation(project(":food-order-app:food-order-infrastructure"))
     implementation(project(":restaurant-app:restaurant-infrastructure"))
-
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-    }
 }
 
 springBoot {
-    mainClassName = "mija.hex.AppKt"
+    mainClassName = "mija.hex.infrastructure.app.restaurant.RestaurantAppKt"
 }
 
 tasks{

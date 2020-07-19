@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    image: "mija-hex/application:latest"
+    ports:
+      - 8080:8080
+
+  restaurant:
+    image: "mija-hex/restaurant-docker:latest"
+    ports:
+      - 8081:8080
+
+  delivery:
+    image: "mija-hex/delivery-docker:latest"
+    ports:
+      - 8082:8080
+
+  food-order:
+    image: "mija-hex/food-order-docker:latest"
+    ports:
+      - 8083:8080
+

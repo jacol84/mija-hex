@@ -1,6 +1,6 @@
 package mija.hex.test
 
-import mija.hex.FoodOrderApp
+import mija.hex.App
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderCommandService
 import mija.hex.domain.order.infrastructure.port.primary.FoodOrderQueryService
 import mija.hex.domain.order.infrastructure.port.shared.OrderState
@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@SpringBootTest(classes = [FoodOrderApp::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = [App::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class CrossDomainSysTest {
     @Autowired
     private lateinit var foodOrderCommandService: FoodOrderCommandService
