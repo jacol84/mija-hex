@@ -39,6 +39,7 @@ jobs:
         run: ./gradlew jacocoMergeTest
       - name: Build with Gradle
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_CLOUD_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
         run: ./gradlew sonarqube
 
@@ -64,20 +65,30 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-
- #     - name: ls -a
- #       run: ls -a
-      - name: git log -5
-        run: git log 
-#       - name: Grant execute permission for gradlew
-#         if: startsWith(matrix.os, 'ubuntu-latest')
-#         run: chmod +x gradlew
-#         run : chmod +x gradlew
-#        run: git update-index --chmod=+x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: get jar
+      - name: get jar application
         uses: actions/upload-artifact@v1
         with:
-          name: jar-${{ matrix.os }}-${{ matrix.java }}
-          path: build/libs/mija-hex.jar
+          name: app-full-${{ matrix.os }}-${{ matrix.java }}
+          path: /application/build/libs
+      - name: get jar simple-delivery
+        uses: actions/upload-artifact@v1
+        with:
+          name: delivery-${{ matrix.os }}-${{ matrix.java }}
+          path: delivery-app\delivery-docker\build\libs
+#      - name: get jar app-full
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: app-full-${{ matrix.os }}-${{ matrix.java }}
+#          path: /application/build/libs
+      - name: get jar food-order
+        uses: actions/upload-artifact@v1
+        with:
+          name: food-order-${{ matrix.os }}-${{ matrix.java }}
+          path: \food-order-app\food-order-docker\build\libs
+      - name: get jar restaurant
+        uses: actions/upload-artifact@v1
+        with:
+          name: restaurant-${{ matrix.os }}-${{ matrix.java }}
+          path: \restaurant-app\restaurant-docker\build\libs
