@@ -71,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app-full-${{ matrix.os }}-${{ matrix.java }}
-          path: /application/build/libs
+          path: application/build/libs
       - name: get jar simple-delivery
         uses: actions/upload-artifact@v1
         with:
@@ -86,9 +86,9 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: food-order-${{ matrix.os }}-${{ matrix.java }}
-          path: \food-order-app\food-order-docker\build\libs
+          path: food-order-app\food-order-docker\build\libs
       - name: get jar restaurant
         uses: actions/upload-artifact@v1
         with:
           name: restaurant-${{ matrix.os }}-${{ matrix.java }}
-          path: \restaurant-app\restaurant-docker\build\libs
+          path: restaurant-app\restaurant-docker\build\libs
