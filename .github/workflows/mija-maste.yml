@@ -72,25 +72,25 @@ jobs:
       - name: get jar application
         uses: actions/upload-artifact@v1
         with:
-          name: app-full-${{ matrix.os }}-${{ matrix.java }}
+          name: app-full-${{ matrix.os }}-jdk-${{ matrix.java }}
           path: application/build/libs
       - name: get jar simple-delivery
         uses: actions/upload-artifact@v1
         with:
-          name: delivery-${{ matrix.os }}-${{ matrix.java }}
+          name: delivery-${{ matrix.os }}-jdk-${{ matrix.java }}
           path: delivery-app/delivery-docker/build/libs
 #      - name: get jar app-full
 #        uses: actions/upload-artifact@v1
 #        with:
-#          name: app-full-${{ matrix.os }}-${{ matrix.java }}
+#          name: app-full-${{ matrix.os }}-jdk-${{ matrix.java }}
 #          path: /application/build/libs
       - name: get jar food-order
         uses: actions/upload-artifact@v1
         with:
-          name: food-order-${{ matrix.os }}-${{ matrix.java }}
+          name: food-order-${{ matrix.os }}-jdk-${{ matrix.java }}
           path: food-order-app/food-order-docker/build/libs
       - name: get jar restaurant
         uses: actions/upload-artifact@v1
         with:
-          name: restaurant-${{ matrix.os }}-${{ matrix.java }}
+          name: restaurant-${{ matrix.os }}-jdk-${{ matrix.java }}
           path: restaurant-app/restaurant-docker/build/libs
