@@ -1,23 +1,52 @@
 version: "3.8"
 
 services:
+
   app:
     image: "mija-hex/application:latest"
     ports:
       - 8080:8080
+    environment:
+        TZ: "Europe/Warsaw"
+    command:
+      sh -c "
+      echo $TZ > /etc/timezone &&
+      dpkg-reconfigure -f noninteractive tzdata &&
+      exec mija-hex/application:latest
+      "
 
   restaurant:
     image: "mija-hex/restaurant-docker:latest"
     ports:
       - 8081:8080
+    environment:
+        TZ: "Europe/Warsaw"
+    command:
+        sh -c "
+        echo $TZ > /etc/timezone &&
+        dpkg-reconfigure -f noninteractive tzdata &&
+        exec mija-hex/restaurant-docker:latest
+        "
 
   delivery:
     image: "mija-hex/delivery-docker:latest"
     ports:
       - 8082:8080
+    environment:
+        TZ: "Europe/Warsaw"
+    command:
+        sh -c "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &&
+        echo $TZ > /etc/timezone &&
+        exec mija-hex/delivery-docker:latest"
 
   food-order:
     image: "mija-hex/food-order-docker:latest"
     ports:
       - 8083:8080
+    environment:
+      TZ: "Europe/Warsaw"
+    command:
+      sh -c "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &&
+      echo $TZ > /etc/timezone &&
+      exec mija-hex/food-order-docker:latest"
 
