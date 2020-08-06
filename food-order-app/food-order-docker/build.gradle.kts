@@ -20,6 +20,7 @@ tasks{
         enabled = true
     }
     bootBuildImage {
+//        environment("TZ","Europe/Warsaw")
         enabled = true
     }
     // kotlin
